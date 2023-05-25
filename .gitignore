@@ -1,0 +1,29 @@
+# Ignore Visual Studio Code and JetBrains IDE files
+.vscode/
+.idea/
+
+# Ignore build output directories
+/bin/
+/obj/
+
+# Ignore NuGet packages
+**/*.nuget.targets
+**/*.nuget.props
+**/packages/
+
+# Ignore user-specific files
+*.user*.*
+*.suo
+*.cache
+
+# Ignore Entity Framework migrations
+#**/Migrations/
+
+# Ignore sensitive information and secrets
+#appsettings.json
+#appsettings.Development.json
+#secrets.json
+
+# Ignore logs and debugging files
+*.log
+*.vsdebug/
