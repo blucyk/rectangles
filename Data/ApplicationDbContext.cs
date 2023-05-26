@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Rectangles.Models;
 
 public class ApplicationDbContext : DbContext
 {

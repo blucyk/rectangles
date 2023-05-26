@@ -1,11 +1,7 @@
-
-
+namespace Rectangles.Models;
 /// <summary>
-/// Represents a rectangle entity model with the coordinates (X1, Y1) for the bottom-left corner and (X2, Y2) for the top-right corner.
+///     Represents a rectangle entity model with the coordinates (X1, Y1) for the bottom-left corner and (X2, Y2) for the top-right corner.
 /// </summary>
-/// <remarks>
-/// 
-/// </remarks>
 public class Rectangle
 {
     public int Id { get; set; }
