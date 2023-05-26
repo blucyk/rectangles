@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Rectangles.Models;
 
+namespace Rectangles.Data;
 public class ApplicationDbContext : DbContext
 {
     private readonly IConfiguration _config;

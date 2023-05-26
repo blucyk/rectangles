@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Rectangles.Models;
+using Rectangles.Services;
 
 namespace Rectangles.Controllers;
 [Route("api/[controller]")]
@@ -8,31 +9,33 @@ public class RectangleController : ControllerBase
 {
 
     private readonly ILogger<RectangleController> _logger;
+    private readonly RectangleService _rectangleService;
 
-    public RectangleController(ILogger<RectangleController> logger)
+    public RectangleController(ILogger<RectangleController> logger, RectangleService rectangleService)
     {
         _logger = logger;
+        _rectangleService = rectangleService;
     }
-
-
+ 
 [HttpPost]
-public IEnumerable<Rectangle> SearchRectangles([FromBody] Coordinate[] points)
-{
-        // TODO: validate
-        
-        _logger.LogInformation("Searching for coordinate matches");
-        
-        // TODO: Process the coordinates
-
-        return Enumerable.Range(1, 3).Select(index => new Rectangle
+    public async Task<IActionResult> Post([FromBody] Coordinate[] points)
+    {
+        try
         {
-            Id = index + 1,
-            X1 = Random.Shared.Next(1, 20),
-            Y1 = Random.Shared.Next(1, 20),
-            X2 = Random.Shared.Next(30, 50),
-            Y2 = Random.Shared.Next(30, 50)
-        })
-        .ToArray();
+            _logger.LogInformation("Searching for coordinate matches");
+            var rectangles = await _rectangleService.FindRectanglesAsync(points);
+            return Ok(rectangles);
+        }
+        catch (ArgumentException e)
+        {
+            _logger.LogError(e, e.Message);
+            return BadRequest(e.Message);
+        }
+        catch (Exception e)
+        {
+            _logger.LogError(e, e.Message);
+            return StatusCode(500, "An error occurred while processing your request.");
+        }
     }
 
     
