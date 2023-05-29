@@ -9,16 +9,16 @@ public class RectangleController : ControllerBase
 {
 
     private readonly ILogger<RectangleController> _logger;
-    private readonly RectangleService _rectangleService;
+    private readonly IRectangleService _rectangleService;
 
-    public RectangleController(ILogger<RectangleController> logger, RectangleService rectangleService)
+    public RectangleController(ILogger<RectangleController> logger, IRectangleService rectangleService)
     {
         _logger = logger;
         _rectangleService = rectangleService;
     }
  
 [HttpPost]
-    public async Task<IActionResult> Post([FromBody] Coordinate[] points)
+    public async Task<IActionResult> Post([FromBody] List<Coordinate> points)
     {
         try
         {
