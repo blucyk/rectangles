@@ -5,8 +5,8 @@ namespace Rectangles.Data;
 public class ApplicationDbContext : DbContext
 {
     private readonly IConfiguration _config;
-
-    public ApplicationDbContext(IConfiguration config)
+    
+    public ApplicationDbContext(IConfiguration config, DbContextOptions<ApplicationDbContext> options): base(options)
     {
         _config = config;
     }
