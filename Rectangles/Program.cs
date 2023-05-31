@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Rectangles.Data;
+using Rectangles.Helpers;
 using Rectangles.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<IRectangleService, RectangleService>();
-//builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(
@@ -27,6 +27,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<AuthenticationMiddleware>();
 
 app.UseHttpsRedirection();
 

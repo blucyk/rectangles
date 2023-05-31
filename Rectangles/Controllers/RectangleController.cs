@@ -17,7 +17,7 @@ public class RectangleController : ControllerBase
         _rectangleService = rectangleService;
     }
  
-[HttpPost]
+    [HttpPost]
     public async Task<IActionResult> Post([FromBody] List<Coordinate> points)
     {
         try
