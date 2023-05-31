@@ -39,13 +39,13 @@ public class RectangleServiceTests
     public async Task GetRectanglesContainingPointsAsync_ShouldReturnMatchingRectangles()
     {
         // Arrange
-        var rectangles = GetTestRectangles();
+        var rectangles = DbInitializer.GetTestRectangles();
 
         // Add test data to the context
         _context.Rectangles.AddRange(rectangles);
         _context.SaveChanges();
 
-        var points = GetTestPoints();
+        var points = DbInitializer. GetTestPoints();
 
         // Act
         var result = await _service.FindRectanglesAsync(points);
@@ -62,22 +62,4 @@ public class RectangleServiceTests
         _context.Dispose();
     }
 
-    private List<Rectangle> GetTestRectangles()
-    {
-        return new List<Rectangle>
-        {
-            new Rectangle { Id = 1, X1 = 0, Y1 = 0, X2 = 10, Y2 = 10 },
-            new Rectangle { Id = 2, X1 = 35, Y1 = 45, X2 = 55, Y2 = 65 }
-        };
-    }
-
-    private List<Coordinate> GetTestPoints()
-    {
-        return new List<Coordinate>
-        {
-            new Coordinate { X = 5, Y = 5 },    // finds ID 1
-            new Coordinate { X = 36, Y = 50 },  // finds ID 2
-            new Coordinate { X = 110, Y = 100 } // Miss
-        };
-    }
 }

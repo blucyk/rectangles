@@ -35,3 +35,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { } // So we can reference this from tests. See https://stackoverflow.com/a/69483450
