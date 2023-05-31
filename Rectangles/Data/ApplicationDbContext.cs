@@ -55,6 +55,8 @@ public class ApplicationDbContext : DbContext
         }
 
         modelBuilder.Entity<Rectangle>().HasData(rectangles);
+        // Try to help speed up the filtering of rectangles based on coordinate values, especially if the number of rectangles grows.
+        modelBuilder.Entity<Rectangle>().HasIndex(r => new { r.X1, r.Y1, r.X2, r.Y2 });
         modelBuilder.Entity<Rectangle>().ToTable("Rectangles");
     }
 
