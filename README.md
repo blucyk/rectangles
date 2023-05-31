@@ -1,7 +1,3 @@
-Sure, here is a basic template for your README file. Feel free to modify it as necessary:
-
----
-
 # Rectangle Matcher API
 
 ## Overview
