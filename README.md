@@ -37,7 +37,7 @@ The application also:
 
 1. Clone the repo
 ```
-git clone https://github.com/CHANGEME/RectangleMatcherAPI.git
+git clone https://github.com/blucyk/rectangles.git
 ```
 2. Install .NET packages
 ```
@@ -57,6 +57,10 @@ dotnet run
 ### Endpoint
 
 **POST /api/rectangle**
+
+Request Header:
+
+Add 'X-Api-Key' key with a value of 'SampleAPIKey-ONEHSN123'
 
 Request Body:
 
