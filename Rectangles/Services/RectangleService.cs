@@ -21,7 +21,6 @@ public class RectangleService : IRectangleService
             throw new ArgumentException("Points cannot be null or empty", nameof(points));
         }
 
-
         try
         {
             //  Reduce the number of database operations and load all rectangles into memory to improve performance. 
