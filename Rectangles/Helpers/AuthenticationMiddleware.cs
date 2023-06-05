@@ -19,7 +19,7 @@ namespace Rectangles.Helpers
                 return;
             }
 
-            var validApiKey = "SampleAPIKey-ONEHSN123"; // Replace with a UUID
+            var validApiKey = "SampleAPIKey-ONEHSN123"; // Replace with a UUID and use secrets.json
             if (receivedApiKey != validApiKey)
             {
                 context.Response.StatusCode = 401;

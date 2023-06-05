@@ -20,6 +20,7 @@ public class RectangleControllerTests : IClassFixture<CustomWebApplicationFactor
     {
         // Arrange
         var client = _factory.CreateClient();
+        client.DefaultRequestHeaders.Add("X-Api-Key", "SampleAPIKey-ONEHSN123");    // should use secrets.json
         var points = DbInitializer.GetTestPoints();
 
         // Act
