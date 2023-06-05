@@ -39,6 +39,14 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 {
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
+        builder.ConfigureAppConfiguration((context, config) =>
+        {
+            config.AddInMemoryCollection(new Dictionary<string, string>
+            {
+                { "UseInMemoryDatabase", "true" }
+            });
+        });
+        
         builder.ConfigureServices(services =>
         {
             // Remove the app's ApplicationDbContext registration.
@@ -52,7 +60,6 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseInMemoryDatabase(databaseName: "IntegrationTestDatabase");
-                options.UseInternalServiceProvider(new ServiceCollection().AddEntityFrameworkInMemoryDatabase().BuildServiceProvider());
             });
 
             // Build the service provider.

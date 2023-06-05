@@ -15,7 +15,16 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
+
+        if (_config.GetValue<bool>("UseInMemoryDatabase"))
+        {
+            optionsBuilder.UseInMemoryDatabase("IntegrationTestDatabase");
+        }
+        else
+        {
+            optionsBuilder.UseSqlServer(_config.GetConnectionString("DefaultConnection"));
+        }
+
     }
 
 
